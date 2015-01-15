@@ -1,0 +1,52 @@
+
+<h4> Mostrando las propuestas y los votos que llevan.</h4><h5>(630 para ser aprobadas)</h5>
+
+</div>
+<div class="container">
+<table class="table table-stripped" ng-controller='PropuestasCtrl'>
+
+<p>
+<button type="button" ng-click="GetData('new')" class="btn {{btnNew}} btn-xs"> Nuevas </button>
+<button type="button" ng-click="GetData('hot')" class="btn {{btnHot}} btn-xs"> Activas </button>
+<button type="button" ng-click="GetData('comments')" class="btn {{btnCmnt}} btn-xs"> Mas comentadas </button>
+<button type="button" ng-click="GetData('top')" class="btn {{btnTop}} btn-xs"> Populares </button>
+<button type="button" ng-click="GetPosts()" class="btn btn-dsiabled btn-xs"> Aprobadas </button>
+</p>
+
+
+<tbody>
+<tr ng-repeat="envio in envios">
+
+<td><h2>{{envio.data.score}}</h2></td>
+
+<td> <h4> <a ng-href="{{envio.data.url}}">{{envio.data.title}}</a></h4><br> 
+
+
+<span ng-if="envio.data.ups > 630" class="label label-success">{{envio.data.link_flair_text}} aprobada</span>
+<span ng-if="envio.data.ups < 630" class="label label-warning">{{envio.data.link_flair_text}}</span>
+
+<a ng-href='{{envio.data.url}}' target='_blank'><span class="label label-primary">link</a></span>
+por: {{ envio.data.author }} 
+
+<span class = "label label-info"> {{ envio.data.num_comments }} comentarios</span>
+<span class = "label label-info"> {{envio.data.created_utc * 1000 |date:'dd-MM-yyyy'}} </span>
+<p >
+<div ng-if="envio.data.ups < 630 "class="progress">
+  <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="630" style="width: {{envio.data.ups * 100 / 630 }}%">
+    <span class="sr-only">{{envio.data.ups * 100 / 630 }}% Completo</span>
+  </div>
+</div>
+
+<div ng-if="envio.data.ups > 630"class="alert alert-success" role="alert">Propuesta Aprobada y en desarrollo!</div>
+
+</td>
+
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+
+
+</div>
