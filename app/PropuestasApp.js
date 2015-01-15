@@ -13,7 +13,7 @@ angular
 			.when('/preguntas',{controller:'PregutnasCtrl',templateUrl:'templates/preguntas.html'})
 			.when('/propuestas',{controller:'PropuestasCtrl',templateUrl:'templates/propuestas.html'})
 			.otherwise( {redirectTo:'/propuestas'} )
-			z
+			
 	})
 
 	
